@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--立即执行函数-->
+<!--针对初始化功能的函数，执行完之后就会被销毁-->
+<script type="text/javascript">
+    //立即执行函数的格式
+    //将最外层括号里面的东西变成表达式
+    (function () {
+        var a = 123;
+        var b = 234;
+        console.log(a + b);
+    }());
+</script>
+<script type="text/javascript">
+    //定义一个变量等于立即执行函数
+    //返回函数的值之后立即销毁数据
+    var num = (function (a, b, c) {
+        var d = a + b + c * 2 - 2;
+        return d;
+    }(1,2,3));
+</script>
+<script type="text/javascript">
+    //第二种写法
+    //函数声明
+    function test() {
+        var a = 123;
+    }
+    //只有表达式才能被执行符号（就是括号）执行
+    //test();是表达式
+    test();
+</script>
+<script type="text/javascript">
+    // var aa = function () {
+    //     console.log('a');
+    // };
+    //函数表达式后面还没有加括号时候，输入函数名字可以输出函数
+    var aa = function () {
+        console.log('a');
+    }();
+    //在函数表达式之后加括号，就变成了立即执行函数
+    //此时输入aa，函数名字会被自动忽略，输出undefined
+</script>
+
+</body>
+</html>

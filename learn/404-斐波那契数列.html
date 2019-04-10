@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--后一位数等于前两位数的和-->
+<!--利用for循环实现结果的时候，先找规律，有什么规律可以实现这个结果，需要循环多少次-->
+<script type="text/javascript">
+    var n = parseInt(window.prompt('显示第几项：'));
+    //数列的规律，第三个数等于第二个数加上第一个数
+    //定义第一个、第二个、第三个数
+    //第三个数始终是未知的
+    var first = 1;
+    var second = 1;
+    var third;
+    //观察规律 判断需要循环的次数，输出第三项的结果的时候，需要计算一次，第四项需要计算2次，第五项需要计算3次
+    //同理，计算第n项的循环次数为n-2
+    if (n === 1 || n === 2){
+        third = 1;
+    }
+    else {
+        for (var i = 0; i < n - 2; i ++){
+            third = first + second;
+            first = second;
+            second = third;
+        }
+    }
+    console.log(third);
+</script>
+</body>
+</html>

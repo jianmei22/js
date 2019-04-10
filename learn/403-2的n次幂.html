@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--计算2的n次幂-->
+<script type="text/javascript">
+    //先找规律，下一个数 = 上一位数 * 2
+    var n = parseInt(window.prompt('input a number:'));
+    //定义一个变量存储得到的结果
+    //此处定义的mul不能为0，0乘任何数字都等于0
+    var mul = 1;
+        //此处i不能等于1，只能等于0，如果等于1，则会减少i++的次数，使结果少一次乘以2
+        for (var i = 0;i < n; i ++ ) {
+            mul *= 2;
+        }
+        //当等于0次幂的时候，不满足条件，所以直接输出mul的值等于1
+    console.log(mul);
+</script>
+</body>
+</html>

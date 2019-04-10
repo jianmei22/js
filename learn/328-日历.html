@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            width: 220px;
+            height: 320px;
+            background-color: #999;
+        }
+        .container .cal{
+            width: 80px;
+            height: 80px;
+            background-color: #90EE90;
+            float: left;
+            margin: 13px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 80px;
+            color: #FFFFFF;
+        }
+        .container .cal.active{
+            background-color: #FA8072;
+        }
+        .project{
+            width: 220px;
+            height: 100px;
+            background-color: #FA8072;
+        }
+    </style>
+    <script>
+        //定义存储内容的数组
+        var data = [
+            11111111,
+            22222222,
+            33333333,
+            44444444,
+            55555555,
+            66666666,
+            77777777,
+            88888888,
+            99999999,
+        ];
+        window.onload = function () {
+            var aDiv = document.getElementsByClassName('cal');
+            //此处必须加上[0],因为getElementsByClassName获取的是一个数组
+            var oP = document.getElementsByClassName('project')[0];
+        //    for循环给每一个div加一个事件
+            for (var i = 0; i < aDiv.length; i ++){
+                aDiv[i].index = i;
+                aDiv[i].onclick = function () {
+                    //清除每一个div的样式
+                    for (var i = 0; i < aDiv.length; i ++){
+                        //将所有的div的样式变成cal
+                        aDiv[i].className = 'cal';
+                        //将文字颜色恢复默认
+                        aDiv[i].style.color = '#fff';
+                    }
+                    //当前点击事件的样式
+                    aDiv[this.index].className = 'cal active';
+                    //设置当前点击的文字的颜色
+                    aDiv[this.index].style.color = '#90EE90';
+                    //利用innerHtml将数组内的内容写入到对应的标签内
+                    oP.innerHTML = '<h2>' + (this.index + 1) + '月活动 </h2> <p>' + data[this.index] + '</p>';
+                };
+            }
+        };
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="cal active">1</div>
+    <div class="cal">2</div>
+    <div class="cal">3</div>
+    <div class="cal">4</div>
+    <div class="cal">5</div>
+    <div class="cal">6</div>
+</div>
+<div class="project">
+    <h2>1月活动</h2>
+    <p>11111111</p>
+</div>
+</body>
+</html>

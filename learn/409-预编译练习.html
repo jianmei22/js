@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    a = 100;
+    function demo(e) {
+        function e() {}
+        arguments[0] = 2;
+        console.log(e);
+        if (a) {
+            var b = 123;
+            function c() {
+                //if里面不可以声明函数
+            }
+        }
+        var c;
+        a =10;
+        var a;
+        console.log(b);
+        //f虽然赋值为123，但是没有声明变量，所以将值传给GO，即全局变量
+        f = 123;
+        console.log(c);
+        console.log(a);
+    }
+    //不管变量声明的位置，都是先执行var，再将值赋给变量。
+    var a;
+    demo(1);
+    console.log(a);
+    //此处调用的是全局变量GO的a的值
+    console.log(f);
+    // GO{
+    //     a:undefined -> 100 ;
+    //     demo:function () {};
+    //     f:123
+    // }
+
+    // AO{
+    //     e:undefined -> 1(形参值和实参值相同) -> 2(arguments[0] = 2)
+    //     b:undefined (始终是undefined，if下面不可以声明函数，不可以执行b)
+    //     c:undefined(虽然声明了一个变量c，但是没有赋值)
+    //     a:undefined -> 10
+    // }
+</script>
+</body>
+</html>

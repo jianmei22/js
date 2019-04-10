@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    var one = 1;
+    var two = 1;
+    var three;
+    //此处函数传入的形参n代表当显示第n项的时候对应的数字
+    //for循环循环次数，此处i循环次数规律，当输出第三个数的时候，计算了一次
+    //输出第四个数的时候，计算了两次，输出第五个数的时候，计算了三次
+    //故而i < n - 2;
+    function shuLie(n) {
+        if (n === 1 || n === 2){
+            three = 1;
+        }
+        else {
+            for (var i = 0 ;i < n - 2; i ++){
+                three = one + two;
+                one = two;
+                two = three;
+            }
+        }
+        console.log(three);
+    };
+    shuLie(8);
+</script>
+</body>
+</html>

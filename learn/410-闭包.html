@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    function a() {
+        function b() {
+         var bbb = 234;
+         console.log(aaa);  // 123
+        }
+        var aaa = 123;
+        return b;
+    }
+    var glob = 100;
+    var demo = a();
+    demo();
+</script>
+<script type="text/javascript">
+    function a() {
+        var num = 100;
+        function b() {
+            //num ++是先输出100，再加1
+            num ++;
+            console.log(num);
+            //此时得到的是加1之后的num
+        }
+        return b;
+    }
+    var demo = a();
+    demo();  // 101
+    demo(); // 102
+</script>
+<script type="text/javascript">
+    function a() {
+        var num = 100;
+        function b() {
+            //num++是先输出再加，所以第一次输出的是100
+            //此处的num只执行了一次，即先输出的是num = 100
+            console.log(num ++);
+        }
+        return b;
+    }
+    var demo = a();
+    demo(); //100
+    demo(); //101
+</script>
+<!--一对二的闭包-->
+<script type="text/javascript">
+    function test() {
+        var num = 100;
+        function a () {
+            num ++;
+            console.log(num);
+        }
+        function b() {
+            num --;
+            console.log(num);
+        }
+        return [a,b];
+    }
+    var myArr = test();
+    myArr[0]();
+    //a函数的作用域
+    // a.[[scope]]  0 ; aAO()
+    //              1 : test()
+    //              2 : GO
+
+    //执行myArr【0】之后 test作用域中的num已经变成了101
+    //所以b函数是在num=101的基础上进行运算，
+    myArr[1]();
+    //b的作用域
+    // b.[[scope]]  0 ; bAO()
+    //              1 : test()
+    //              2 : GO
+</script>
+<script type="text/javascript">
+    function test() {
+        var num = 100;
+        function a () {
+            num ++;
+            console.log(num);
+        }
+        function b() {
+            num --;
+            console.log(num);
+        }
+        return [a,b];
+    }
+    var myArr = test();
+    //此时得到的是99
+    //因为没有执行a函数，所以test作用域中的num没有被改变，即还是num = 100
+    //b函数在num = 100 的基础上进行运算
+    myArr[1]();
+</script>
+</body>
+</html>

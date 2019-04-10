@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--利用递归-->
+<!--递归最重要的是要找到规律和出口（否则会无限死循环）-->
+<script type="text/javascript">
+    //传入一个参数n，相当于输入一个n值
+    //先找规律：n! = n * (n - 1)!
+    //函数自身的功能就是求阶乘的，可以用mul(n - 1)表示n - 1的阶乘
+    //故而可以return n * mul(n - 1)
+    function mul(n) {
+        if (n === 1 || n ===0){
+            return  1;
+        }
+        else {
+            return  (n * mul(n - 1));
+            //递归的核心
+            //第一次：3 * mul（3 - 1），即3 * mul（2）；
+            //第二次：2 * mul（2 - 1），即2 * mul（1）；
+            //第三次：1 * mul（1 - 1），即1 * mul（0）；
+        }
+    };
+    mul(5); //120
+</script>
+</body>
+</html>

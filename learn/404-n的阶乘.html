@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    var n = parseInt(window.prompt('input a number'));
+    var jie = 1;
+    //记住此处i++是先输出再加，即如果定义变量i等于0，则会输出i=0；
+    //当i第一次输出等于0的时候，jie*=i；不管输出的数是什么，都会输出结果等于0
+    for (var i = 1; i <= n; i ++) {
+        jie *= i;
+    }
+    console.log(jie);
+</script>
+</body>
+</html>

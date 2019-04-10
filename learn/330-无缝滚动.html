@@ -1,0 +1,100 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        input{
+            margin: 30px 60px;
+            background-color: #FA8072;
+        }
+        .scroll{
+            width: 800px;
+            height: 200px;
+            position: relative;
+            /*必须要用overflow：hidden让div只显示4个li*/
+            overflow: hidden;
+            margin: 30px;
+            cursor: pointer;
+        }
+        /*每次移动整个ul，所以相对于外面的div进行定位*/
+        .scroll ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .scroll ul li{
+            list-style: none;
+            float: left;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //获取scroll
+            var aScroll = document.getElementsByClassName('scroll');
+            //获取ul
+            var aUl = document.getElementsByTagName('ul')[0];
+            var aLi = aUl.getElementsByTagName('li');
+            //获取定义的两个input
+            var aOne = document.getElementsByClassName('one')[0];
+            var aTwo = document.getElementsByClassName('two')[0];
+            //定义一个变量存储滚动的速度
+            var speed = 2;
+            //得到两个ul的内容
+            aUl.innerHTML += aUl.innerHTML;
+            //让ul的宽度等于所有li宽度的和
+            aUl.style.width = aLi[0].offsetWidth * aLi.length + 'px';
+            //定义一个函数，用于开始和暂停
+            function move() {
+                //当向左滚动到小于宽度的一半时，让ul的left等于0
+                if (aUl.offsetLeft < - aUl.offsetWidth / 2) {
+                    aUl.style.left = '0';
+                }
+                //当向右滚动到left>0时，让left的距离等于width的一半
+                if (aUl.offsetLeft > 0){
+                    aUl.style.left = - aUl.offsetWidth / 2 + 'px';
+                }
+                //定义移动的速度
+                aUl.style.left = aUl.offsetLeft + speed + 'px';
+            }
+            //定时器，每30毫秒移动一次
+            var timer = setInterval(move,30);
+            //鼠标经过时暂停，关闭定时器
+            aUl.onmouseover = function () {
+                clearInterval(timer);
+            };
+            //鼠标移出时，开始定时器
+            aUl.onmouseout = function () {
+                timer = setInterval(move,30);
+            };
+            //鼠标点击事件的时候，通过改变speed的正负以及数字，改变方向和速度
+            aOne.onclick = function () {
+                speed = -2;
+            };
+            aTwo.onclick = function () {
+                speed = 2;
+            };
+        };
+    </script>
+</head>
+<body>
+<div class="scroll">
+    <ul>
+        <li><img src="./img/1.jpg" alt=""></li>
+        <li><img src="./img/2.jpg" alt=""></li>
+        <li><img src="./img/3.jpg" alt=""></li>
+        <li><img src="./img/4.jpg" alt=""></li>
+    </ul>
+</div>
+<input type="button" value="向左" class="one">
+<input type="button" value="向右" class="two">
+</body>
+</html>
