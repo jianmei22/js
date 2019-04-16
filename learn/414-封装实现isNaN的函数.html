@@ -7,7 +7,12 @@
 <body>
 <script type="text/javascript">
     function myIsNaN(num) {
+        //先输出number这个num的结果输出
+        //如果这个数经过Number之后，如果是NaN,则会输出字符串NaN,
         var ret = Number(num);
+        //因为比较的是字符串NaN,所以要将ret转换成字符串，加上一个空串，注意不是空字符串，
+        //如果是空字符串 则得到的是一直是false，
+        //一直得到的是false的六个值：0 false ‘ ’ undefined null NaN
         ret += '';
         if (ret == 'NaN'){
             return true;
