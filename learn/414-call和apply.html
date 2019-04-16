@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function Person(name,age) {
+        //obj == this
+        this.name = name;
+        this.age = age;
+    }
+    var person = new Person('deng', 100);
+    var obj = {};
+    //call会让Person里面所有预设的this全都变成obj
+    //call里面的第一个参数会改变this的指向
+    Person.call(obj, 'zhang', 300);
+    //第二位开始可以当正常实参传入形参
+</script>
+
+
+
+<script type="text/javascript">
+    function Personn(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    function Student(name, age, sex, tel, grade) {
+        //call改变this指向
+        //借用别人的函数，实现自己的功能
+        //var this = {}
+        //对象封装之后：var this = {this : '', age : '', sex : ''}
+        Personn.call(this, name, age, sex);
+        this.tel = tel;
+        this.grade = grade;
+        //当需求被完全覆盖的时候才可以用这个
+    }
+    //构造函数必须new一个变量才可以实现，否则就是一个普通的函数
+    var student = new Student('sunny', 123, 'male', 139, 2017);
+</script>
+<!--模拟一个工厂造车的过程-->
+<script type="text/javascript">
+    function Wheel(wheelSize, style) {
+        this.style = style;
+        this.wheelSize = wheelSize;
+    }
+    function Sit(c, sitColor) {
+        this.c = c;
+        this.sitColor = sitColor;
+    }
+    function Model(height, width, len) {
+        this.height = height;
+        this.width = width;
+        this.len = len;
+    }
+    //一个完整的车拥有以上函数的所有参数值
+    function Car(wheelSize, style, c, sitColor, height, width, len) {
+        //借用以上函数的功能实现这个车的整个功能
+        Wheel.call(this, wheelSize, style);
+        Sit.call(this, c, sitColor);
+        Model.call(this, height, width, len);
+    }
+    //不要忘记在函数中传入参数
+    var car = new Car(100, 'jianmei', 'meimei', 'red', 100, 200,300);
+</script>
+<script type="text/javascript">
+    //call和apply的区别
+    // call 需要把实参按照形参的个数传进去
+    // apply 需要传一个arguments 实参列表
+    // Wheel.call(this, [wheelSize, style]);
+    // Sit.call(this, [c, sitColor]);
+    // Model.call(this, [height, width, len]);
+</script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

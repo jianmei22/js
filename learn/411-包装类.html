@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    // var num = new Number(123);
+    // var str = new String('abcd');
+    // var bol = new Boolean('true');
+
+    //包装类
+    var num = 4;
+
+    num.len = 3;
+    //new Number(4).len = 3;  delete
+    console.log(num.len);
+    //执行第二次new Number(4).len
+</script>
+<script type="text/javascript">
+    var str = 'abcd';
+    str.length = 2;
+    //new String('abcd').length = 2; delete
+    //定义的str是没有长度的，系统new一个string，但是之后又删除
+    console.log(str);  // abcd
+    //length的长度改变跟本身的str没有关系，所以不会改变原来定义的str的值
+    //因为定义的str本身没有length
+    console.log(str.length); // 4
+</script>
+
+<script type="text/javascript">
+    var str = 'abc';
+    str += 1;
+    var test = typeof (str);
+    //test.length 确实等于6，但是test是一个原始值
+    //原始值如果要赋值必须要包装类，就是new一个对象
+    if (test.length == 6) {
+        //虽然可以执行if里面的语句
+        //但是不可以直接给test添加sign属性，因为test并不是一个对象
+        test.sign = 'typeof的返回结果可能为String';
+        //new String(test).sign = 'xxx';
+    }
+    console.log(test.sign);  //undefined
+</script>
+<script type="text/javascript">
+    function Person(name, age, sex) {
+        var a = 0;
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        function sss() {
+            a ++ ;
+            document.write(a);
+        }
+        this.say = sss;
+    }
+    var oPerson = new Person();
+    oPerson.say();  //1
+    oPerson.say();  //2
+    var oPerson1 = new Person();
+    oPerson1.say();  //1
+</script>
+<script type="text/javascript">
+    
+</script>
+</body>
+</html>

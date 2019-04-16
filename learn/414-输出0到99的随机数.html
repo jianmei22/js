@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    for (var i = 0; i < 10; i ++){
+        //toFixed(n)保留几位有效数
+        //这样输出的num会有不准确，有偏差
+        // var num = Math.random().toFixed(2) * 100;
+        // console.log(num);
+
+        //先用随机数乘以100，然后再取整数
+        var num = Math.floor(Math.random() * 100);
+        console.log(num);
+    }
+</script>
+</body>
+</html>

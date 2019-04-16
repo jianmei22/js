@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    //添加一个原型
+    //原型是一个对象
+    // Person.prototype.lastname = 'jianmei';
+    // Person.prototype.firstname = 'meimei';
+    // Person.prototype.length = 'meimei';
+    // Person.prototype.height = 'meimei';
+    // Person.prototype.name = 'meimei';
+
+    //可以简化成下面这样写,因为原型也是一个对象
+    //对象之间用逗号隔开，且除了数字之外其余必须加引号，否则系统会认为是一个变量
+
+    Person.prototype = {
+        // var this = {
+        //     __proto__ : Person.prototype;
+        // }
+        lastname : 'jianmei',
+        name : 'meimei',
+        height : 123324,
+        length : 233334,
+        firstname : '112cdc',
+    }
+    function Person() {
+        // var this = {
+        //     __proto__ : Person.prototype;
+        // }
+    }
+    //构造一个person
+    var person = new Person();
+    //要改变原型的属性，必要要按照这个格式
+    Person.prototype.lastname = 'erhua';
+    Person.prototype = {
+        lastname : 'cherry',
+    }
+    //此时输出的lastname是erhua
+    //虽然按照执行顺序是从上到下，但是已经new生成了一个对象
+
+    // Person的原型等于一个空对象，原型里面存了一个proto
+    // Person.prototype = {name : 'a'};
+    // __proto__ = Person.prototype;
+    //里面的proto还是没变，还是name = a；
+    // Person.prototype = {name : 'b'};
+    //对象换了一个空间
+</script>
+<script type="text/javascript">
+    Son.prototype.name = 'sunny';
+    function Son() {
+
+    }
+    Son.prototype = {
+        name : 'cherry',
+    }
+    var son = new Son();
+    //此时输出的son.name是cherry
+    //函数会被提升上去先执行
+    //按照执行顺序，先执行name = sunny，再执行cherry之后才new了一个对象构造函数
+    //所以第二个会覆盖第一个的name值
+</script>
+<script type="text/javascript">
+    Don.prototype.name = 'sunny';
+    function Don() {
+
+    }
+    var don = new Don();
+    Don.prototype = {
+        name : 'cherry',
+    }
+    //此时输出的don的name是sunny
+    //虽然按照执行顺序是向下依次执行，但是当函数被调用上去之后，开始执行第70行
+    //执行到70行之后就立刻new了一个构造函数，此时的原型name值已经确定不会变了
+    //所以最后再执行改变的时候，就等于换了一个房间，不会改变name的值
+</script>
+<script>
+
+</script>
+</body>
+</html>

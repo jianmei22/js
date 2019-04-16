@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+<!--第一题没懂-->
+    //1.运行 test() 和 new test()的结果分别是什么?
+    // var a = 5;
+    // function test() {
+    //     a = 0;
+    //     console.log(a);
+    //     console.log(this.a);
+    //     var a;
+    //     console.log(a);
+    // }
+
+
+    // 2.分析下面的JavaScript代码段：
+    // function employee(name,code) {
+    //     this.name="wangli";
+    //     this.code="A001";
+    // }
+    // newemp = new employee("zhangming",'A002');
+    // document.write("雇员姓名:"+ newemp.name+ "<br>");
+    // document.write("雇员代号:"+ newemp.code +"<br>");
+    // 输出的结果是().(选择一项)
+
+    // A.  雇员姓名:wangli 雇员代码:A001
+    // B.  雇员姓名：zhangming 雇员代码：A002
+    // C.  雇员姓名：null, 雇员代码：null
+    // D.  代码有错误，无输出结果
+
+
+    // 3.
+    // a = 100;
+    // function demo(e) {
+    //     function e() {}
+    //     arguments[0] = 2;
+    //     document.write(e + ' ');
+    //     //系统读到if语句的时候a还没有定义，不满足条件不执行这句话
+    //     if(a) {
+    //         var b = 123;
+    //         function c() {
+    //             //猪都能做出来
+    //         }
+    //     }
+    //     var c;
+    //     a = 10;
+    //     var a;
+    //     document.write(b + ' ');
+    //     f = 123;
+    //     document.write(c + ' ');
+    //     document.write(a + ' ');
+    // }
+    // var a;
+    // demo(1);
+    // document.write(a + ' ');
+    // document.write(f + ' ');
+
+
+
+    // 4.
+    // var str = "abc";
+    // str += 1;
+    // var test = typeof(str);
+    // if(test.length == 6) {
+    //     test.sign = "typeof的返回结果可能为String";
+    // }
+    // document.write(test.sign);
+
+
+
+    // 5.
+    // function Person(name, age, sex) {
+    //     var a = 0;
+    //     this.name = name;
+    //     this.age = age;
+    //     this.sex = sex;
+    //     function sss() {
+    //         a ++ ;
+    //         document.write(a);
+    //     }
+    //     this.say = sss;
+    // }
+    //
+    // var oPerson = new Person();
+    // oPerson.say();
+    // oPerson.say();
+    // var oPerson1 = new Person();
+    // oPerson1.say();
+
+
+<!-- 第六题没懂-->
+    // 6.改为可以输出0-9的形式
+    // function bb() {
+    //     var arr = [];
+    //     for(var i = 0; i < 10; i++ ) {
+    //         arr[i] = function () {
+    //             document.write(i);
+    //         }
+    //     }
+    //     return arr;
+    // }
+//下面这个部分的作用是什么
+    // var arr1 = bb();
+    // for(var i = 0; i < 10; i++ ) {
+    //     arr1[i]();
+    // }
+    //
+    //
+    //
+    // 7.
+    // var str = false + 1;
+    // document.write(str);
+    // var demo = false == 1;
+    // document.write(demo);
+    // if(typeof(a)&&-true + (+undefined) + ""){
+    //     document.write('基础扎实');
+    // }
+    // if(11 + "11" * 2 == 33) {
+    //     document.write('基础扎实');
+    // }
+    // !!" " + !!"" - !!false||document.write('你觉得能打印，你就是猪');
+
+    //
+    //
+    //
+// 8.
+<!--这个不懂 -->
+// function foo() {
+//     bar.apply(null, arguments);
+//     //相当于bar(arguments)
+//     //把arguments当作参数传到了bar里面
+// }
+// function bar() {
+//     console.log(arguments);
+// }
+// foo(1,2,3,4,5);
+
+//9.
+// 逗号操作符，会返回最后一个逗号后面的值
+// var f = (
+//     function f() {
+//         return '1';
+//     },
+//     function g() {
+//             return 2;
+//     }
+// )();
+// console.log(typeof f);
+
+
+    //10题.
+// var x = 1;
+// //括号的作用是能把里面的内容转化成表达式
+// //此时找不到f这个函数名，所以找不到这个，返回undefined
+// if (function f(){}) {
+//     x += typeof f;
+// }
+// console.log(x);
+// console.log(typeof x);
+
+
+//11题不懂
+// var foo = '123';
+// function print(){
+//     var foo = '456';
+//     this.foo = '789';
+//     console.log(foo);}
+// print();
+
+
+//12题不懂
+var name = '222';
+var a = {
+    name : '111',
+    say : function () {
+        console.info(this.name);
+    }
+}
+var fun = a.say;
+fun();
+a.say();
+var b = {
+    name : '333',
+    say : function (fun) {
+        fun();
+    }
+}
+b.say(a.say);
+b.say = a.say;
+b.say();
+
+    /**
+     *@读书作业,pdf javascript模式 0 - 35页上半部分，要交读书笔记
+     *空余时间多的同学，能力强的同学，一直看到50页上半部分，其中35页上
+     *半部分到38页上半部分不用看。
+     */
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    //当前字符位置的unicode > 255,字符串长度为2
+    //unicode <= 255，字符串长度为1
+        var str = 'hello world 剑梅 !';
+        function byteLength(str) {
+            //count计算str的长度
+            var count = str.length;
+            for (var i = 0;i < str.length; i++){
+                //当第i位上的unicode编码大于255的时候，count++
+                if (str.charCodeAt(i) > 255) {
+                    count ++;
+                }
+            }
+            return count;
+        };
+        //第二种方法
+    function byte() {
+        var count = 0;
+        for (var i = 0; i < str.length; i ++){
+            if (str.charCodeAt(i) > 255) {
+                count += 2;
+            }
+            else {
+                count ++;
+            }
+        }
+        return count;
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    function panDuan() {
+        var str = 'jianmei 剑梅';
+        var count = 0;
+        for (var i = 0; i < str.length; i ++){
+            if (str.charCodeAt(i < 255)) {
+                count += 1;
+            }
+            else{
+                count += 2;
+            }
+        }
+        return count;
+    }
+</script>
+</body>
+</html>

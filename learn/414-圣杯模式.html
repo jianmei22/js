@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    Father.prototype.name = 'deng';
+    function Father() {
+
+    }
+    function Son() {
+
+    }
+
+
+    //圣杯模式
+    //继承extend或者inherit
+    function inherit(Target, Origin) {
+        function F() {};
+            F.prototype = Origin.prototype;
+            //son能够继承Father的属性，但是也可以自己添加改变属性
+            Target.prototype = new F();
+            Target.prototype.constructor = Target;
+            Target.prototype.uber = Origin.prototype;
+    }
+    //inherit是继承，先继承后使用
+    //inherit(Target,Origin)
+    inherit(Son, Father);
+    var son = new Son();
+    var father = new Father();
+</script>
+</body>
+</html>

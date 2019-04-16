@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    //出生的时候Person.prototype已经被定义好了
+    //Person.prototype = {} 祖先
+    Person.prototype.LastName = 'deng';
+    function Person() {
+    }
+    //构造函数必须有new
+    var person = new Person();
+    console.log(person.LastName);
+    //没有定义lastname的属性，但是祖先定义了这个属性，就继承了这个属性
+</script>
+<script type="text/javascript">
+    Person.prototype.LastName = 'deng';
+    Person.prototype.say = 'jianmei';
+    function Person(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    var person = new Person('jianmei', 20, 'male');
+    //即可以有自己的属性，也可以有继承的属性
+    console.log(person.LastName,person.age);
+</script>
+</body>
+</html>

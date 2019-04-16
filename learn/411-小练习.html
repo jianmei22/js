@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--打印输出的x y z三个值分别是多少-->
+<script type="text/javascript">
+    var x = 1, y = z = 0;
+    function add(n) {
+        return n = n + 1;
+    }
+    y = add(x);
+    function add(n) {
+        return n = n + 3;
+    }
+    z = add(x);
+    console.log(x,y,z);  //1,4,4
+    //这是同一个函数，函数会向上提升，
+    //同时定义了两个一样的函数，第一次调用的时候会将第一个函数向上提升
+    // 但是向下执行的时候，会将第二个函数提升上去，第二个函数会覆盖掉第一个函数
+    //所以两个变量被赋值的函数都是第二次提升上去的，执行的都是return n = n + 3
+</script>
+</body>
+</html>

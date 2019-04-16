@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    var str = 'abcd';
+    str.length = 2;
+    console.log(str);     //abcd
+    console.log(str.length); //4
+    console.log(typeof str);  //string
+</script>
+<script type="text/javascript">
+    var str = 'abc';
+    str += 1;     //此时输出的结果str = ‘abc1’
+    var test = typeof (str);     //此时的输出结果为string
+    if(test.length == 6) {   //判断test.length的值，test是string，所以是true
+        test.sign = 'typeod返回结果可能为string';
+        //由于test是原始值，不可以添加方法和属性，不可以在原始值上面加属性
+        //所以即使加了一个sign属性，也是无用功，所以输出undefined
+    }
+    console.log(test.sign);  //undefined
+</script>
+<script type="text/javascript">
+    function Person(name, age, sex) {
+        var a = 0;
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        function sss() {
+            a ++ ;
+            document.write(a);
+        }
+        this.say = sss;
+    }
+
+    var oPerson = new Person();
+    oPerson.say();   //1
+    document.write('<br>');
+    oPerson.say();   //2
+    document.write('<br>');
+    var oPerson1 = new Person();
+    oPerson1.say();  //1
+</script>
+</body>
+</html>
