@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+	</head>
+	<body>
+		<div></div>
+		<script type="text/javascript">
+			//dom
+			var div = document.getElementsByTagName('div')[0];
+			div.style.width = '100px';
+			div.style.height = '100px';
+			div.style.backgroundColor = 'red';
+
+			var count = 0;
+			div.onclick = function() {
+				// 				this.style.backgroundColor = 'blue';
+				// 				this.style.height = '200px';
+				// 				this.style.width = '200px';
+				// 
+				count++;
+				if (count % 2 == 1) {
+					this.style.backgroundColor = 'green';
+				} else {
+					this.style.backgroundColor = 'red';
+				}
+			}
+		</script>
+	</body>
+</html>

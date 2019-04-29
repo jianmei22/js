@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    var obj = {
+        name : 'jianmei',
+        age : 18,
+        sex : 'female'
+    }
+    var obj1 = {
+
+    }
+    function clone(origin, target) {
+        var target = target || {};
+        //将origin里面的所有属性都拿出来，
+        for (var prop in origin) {
+            //将源对象的属性赋给目标地址
+            target[prop] = origin[prop];
+        }
+        return target;
+    }
+    //调用clone函数
+    clone(obj, obj1);
+</script>
+<script type="text/javascript">
+    //克隆
+    var obj = {
+        name : jianmei,
+        sex : female,
+    }
+    var obj1 = {
+
+    }
+    function clone(origin, target) {
+        for (var prop in origin)
+        {
+            target[prop] = origin[prop];
+        }
+    }
+    clone(obj, obj1)
+</script>
+<script type="text/javascript">
+
+    function deepClone() {
+
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

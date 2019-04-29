@@ -1,0 +1,21 @@
+// 构造函数必须new才可以
+// 加上之后会发生三步隐式的变化
+// var this = {}
+// return this
+function Person(name) {
+  //var this = {
+  // makeMoney : function () {}
+  // offer : function () {}
+  // }
+  this.name = name;
+  //money是私有化属性
+  var money = 100;
+  this.makeMoney = function () {
+    money ++;
+  }
+  this.offer = function () {
+    money --;
+  }
+  // return this
+}
+var person = new Person();

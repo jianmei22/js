@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<style type="text/css">
+			button {
+				background-color: tomato;
+			}
+
+			button.act {
+				background-color: aqua;
+			}
+
+			div {
+				background-color: #90EE90;
+				width: 200px;
+				height: 200px;
+				display: none;
+				text-align: center;
+				line-height: 200px;
+			}
+
+			div.active {
+				display: block;
+				background-color: #90EE90;
+				width: 200px;
+				height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<button class="act">111</button>
+		<button>222</button>
+		<button>333</button>
+		<div style="display: block;">111</div>
+		<div>222</div>
+		<div>333</div>
+		<script type="text/javascript">
+			// 此处获取的button是一个数组,以便于for循环的时候,利用数组的下标获取到元素
+			var oBtn = document.getElementsByTagName('button');
+			var oDiv = document.getElementsByTagName('div');
+			for (var i = 0; i < oBtn.length; i++) {
+				(function(n) {
+					oBtn[n].onclick = function() {
+						for (var j = 0; j < oBtn.length; j++) {
+							oBtn[j].className = '';
+							oDiv[j].style.display = 'none';
+						}
+						this.className = 'act';
+						oDiv[n].style.display = 'block';
+					}
+				}(i));
+			}
+		</script>
+	</body>
+</html>

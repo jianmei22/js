@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="width: 100px;height: 100px;background-color: #90EE90;"></div>
+		<script type="text/javascript">
+			var oActive = document.getElementsByTagName('div')[0];
+			var count = 0;
+			oActive.onclick = function() {
+				count++;
+				if (count % 2 == 1) {
+					oActive.style.backgroundColor = 'darkred';
+				} else {
+					oActive.style.backgroundColor = '#90EE90';
+				}
+			}
+		</script>
+	</body>
+</html>

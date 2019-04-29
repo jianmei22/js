@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    //深度克隆的原理
+    //将obj属性全都克隆到obj1
+    var obj = {
+      name: "abc",
+      wife : {
+        name : 'xiaoliu',
+        son : {
+          name : 'xiaowang',
+        }
+      }
+    };
+    var obj1 = {
+      //引用值每次都是新建的
+      wife : {
+        name : obj.wife.name,
+        son : {
+          name : obj.wife.son.name,
+        }
+      }
+    };
+  </script>
+</body>
+</html>

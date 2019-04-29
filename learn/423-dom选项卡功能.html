@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<style type="text/css">
+			.content{
+				display: none;
+				height: 150px;
+				width: 150px;
+				background-color: indianred;
+				margin: 5px 0;
+				text-align: center;
+				line-height: 150px;
+			}
+			.active{
+				background-color: #90EE90;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<button class="active">111</button>
+			<button>222</button>
+			<button>333</button>
+			<div class ="content" style="display: block;">111111</div>
+			<div class = "content">222222</div>
+			<div class = "content">333333</div>
+		</div>
+		<script type="text/javascript">
+			// 获取btn的标签以及div的class名称
+			var btn = document.getElementsByTagName('button');
+			var div = document.getElementsByClassName('content');
+			// 遍历循环btn
+			for(var i = 0; i < btn.length; i ++){
+				// 一个立即执行函数
+				(function(n) {
+					btn[n].onclick = function () {
+						// 点击的时候遍历所有的btn将class变成空
+						for(var j = 0; j < btn.length; j ++ ){
+							btn[j].className = '';
+							div[j].style.display = 'none';
+						}
+						// 当前点击的事件的class
+						this.className = 'active';
+						div[n].style.display = 'block';
+					}
+				}(i))
+			}
+		</script>
+	</body>
+</html>

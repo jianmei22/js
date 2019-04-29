@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 必须要先定位需要移动的元素 -->
+		<div style="background-color: #CD5C5C;
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 0;
+				left: 0;">s</div>
+		<button type="button" style="position: absolute;top: 200px;left: 20px;">加速</button>
+		<script type="text/javascript">
+			var oDiv = document.getElementsByTagName('div')[0];
+			var btn = document.getElementsByTagName('button')[0];
+			var speed = 5;
+			btn.onclick = function() {
+				speed++;
+			};
+			document.onkeydown = function(e) {
+				switch (e.which) {
+					case 38:
+						oDiv.style.top = parseInt(oDiv.style.top) - speed + "px";
+						break;
+					case 39:
+						oDiv.style.left = parseInt(oDiv.style.left) + speed + "px";
+						break;
+					case 40:
+						oDiv.style.top = parseInt(oDiv.style.top) + speed + "px";
+						break;
+					case 37:
+						oDiv.style.left = parseInt(oDiv.style.left) - speed + "px";
+						break;
+
+				}
+
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<i></i>
+			<b></b>
+			<span></span>
+		</div>
+	<script type="text/javascript">
+		// 在原型链上编程
+		Element.prototype.insertAfter = function(targetNode, afterNode) {
+			var beforeNode = afterNode.nextElementSibling;
+			this.insertBefore(targetNode, beforeNode);
+			if(beforeNode == null) {
+				// this可以指代任何想要调用的对象
+				this.appendChild(targetNode);
+			}
+			else {
+				this.insertBefore(targetNode, beforeNode);
+			}
+		}
+		var div = document.getElementsByTagName('div')[0];
+		var span = document.getElementsByTagName('span')[0];
+		var b = document.getElementsByTagName('b')[0];
+		var p = document.getElementsByTagName('p');
+	</script>	
+	</body>
+</html>

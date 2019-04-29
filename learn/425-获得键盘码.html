@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="width:100px;height:100px;background-color: #90EE90;"></div>
+		<script type="text/javascript">
+			document.onkeydown = function(e) {console.log(e.which)};
+			// 先点击文档,再按enter
+		</script>
+		<!-- <script type="text/javascript">
+			var count = 0;
+			for (var i = 0; i < 10; i++) {
+				console.log(i);
+				count++;
+			}
+		</script>
+		<script type="text/javascript">
+			function test() {
+				var arr = [];
+				for (var i = 0; i < 10; i++) {
+					(function(j) {
+						arr[j] = function() {
+							document.write(j + ' ');
+						}
+					}(i));
+				}
+				return arr;
+			}
+			var myArr = test();
+			for (var j = 0; j < 10; j++) {
+				myArr[j]();
+			}
+		</script> -->
+	</body>
+</html>

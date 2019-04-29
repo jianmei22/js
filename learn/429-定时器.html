@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+	</head>
+	<body>
+	<!-- <script type="text/javascript">
+		var i = 0;
+		setInterval(function() {
+			i ++;
+			// console.log(i);
+		}, 1000);
+	</script>	 -->
+	
+	
+	<!-- <script type="text/javascript">
+		var firstTime = new Date().getTime();
+		setInterval(function () {
+			var lastTime = new Date().getTime();
+			// console.log(lastTime - firstTime);
+			firstTime = lastTime;
+		}, 1000);
+	</script> -->
+	
+	
+<!-- 	<script type="text/javascript">
+		// timer是一个数字,唯一标识符
+		var timer = setInterval(function () {
+			
+		}, 1000);
+		// 清除timer
+		clearInterval(timer);
+		var i = 0;
+		var timer2 = setInterval(function () {
+			console.log(i ++);
+			if(i > 10) {
+				clearInterval(timer2);
+			}
+		}, 1000);
+	</script> -->
+	
+	
+	<script type="text/javascript">
+		var timer = setTimeout(function () {
+			console.log('a');
+		}, 1000);
+		console.log(this);
+		// window
+		clearTimeout(timer);
+	</script>
+	</body>
+</html>

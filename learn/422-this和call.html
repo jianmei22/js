@@ -1,0 +1,27 @@
+// 1、预编译 this --> window
+// 2、谁调用的this指向谁
+// 3、call apply
+// 4、全局 this --> window
+
+
+var name = 'window';
+var obj = {
+  say : function () {
+    console.log(this.name);
+  }
+}
+// call改变this的指向
+obj.say.call(window);
+
+//将person里面的this传给student里
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+function Student(name, age, sex) {
+  // var this = Object.create(Student.prototype);
+  //将person的属性传入到student
+  Person.call(this,name,age);
+  this.sex = sex;
+}
+var student = new Student('mei', 18, 'female');

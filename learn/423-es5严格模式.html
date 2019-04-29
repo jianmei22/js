@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//es5的严格模式启动的代码:字符串的模式
+			//写在第一行就是最顶端
+			// "use strict";
+			// 为什么要用字符串
+			// 兼容老的浏览器
+			// console.log(arguments.callee());
+		</script>
+		<!-- with -->
+		<script type="text/javascript">
+			var obj = {
+				name: "obj333",
+			}
+			var name = 'window';
+
+			function test() {
+				var name = 'scope';
+				// with会把里面的对象当作with要执行的代码体的作用域链的最顶端
+				with(obj) {
+					console.log(name);
+				}
+			}
+			test();
+		</script>
+		<script type="text/javascript">
+			// es5严格模式
+			// 里面不可以使用with
+			"use strict"
+			// 			with(document) {
+			// 				write('a');
+			// 			}
+			// var a = b = 4;
+			// 会报错显示b is not defined
+			// 严格模式下面不可以使用没有声明的变量
+			
+		</script>
+		<script type="text/javascript">
+			"use strict"
+			// es5不可以重复属性和参数
+// 			function test(name, name) {
+// 				console.log(name);
+// 			}
+// 			test(1, 2);
+			// 输出2
+			var a = 123;
+			eval('console.log(a))');
+		</script>
+	</body>
+</html>
