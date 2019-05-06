@@ -585,3 +585,232 @@ nextElementSibling:
 最后一个兄弟元素节点
 lastElementSibling
 ```
+
+节点的四个属性：
+
+nodeName：元素的标签名，以大写的形式表示只读
+
+nodeValue：文本或者注释comment节点的属性，可以读写
+
+nodeType：只读，不可写入（任何元素都有这样一个属性）
+
+attributes：element节点的属性节点的结合（能够赋值和修改）
+节点的一个方法：Node.hasChildNodes（）有没有子节点，代表一个函数方法，所以必须要加括号
+
+类数组加一个splice：Array.prototype.splice之后就是一个数组
+Document可以理解成构造函数,document代表整个文档
+
+两者之间是逐步继承的关系
+
+document –- > HTMLDocument -- >Document.prototype
+
+HTMLDocument.prototype  {_proto_:Document}
+
+document上面有两个直接的属性，一个是body一个是head
+
+document.documentElement --- >指的就是html
+JS三个组成部分
+
+ecmascript dom bom
+
+基于元素节点树的遍历，除了children之外，兼容性比较差
+
+构造函数都有一个原型
+
+dom结构树，一系列的继承关系
+
+就近继承
+
+date对象
+
+var date = new Date()
+
+date.getTime(),距1970年1月1日的毫秒
+
+setInterval是非常不准的，定时器，是window上面的一个方法
+
+setTimeout只执行一次
+
+### 查看视口的尺寸
+```bash
+window.innerWidth/innerHeight （加上 滚动条宽度 / 高度）
+IE8及IE8以下不兼容
+document.documentElement.clientWidth/clientHeight
+标准模式下，任意浏览器都兼容
+document.body.clientWidth/clientHeight
+适用于怪异模式下的浏览器
+封装兼容性方法，返回浏览器视口尺寸getViewportOffset()
+```
+### 查看元素的位置
+
+dom.offsetLeft, dom.offsetTop
+
+对于无定位父级的元素，返回相对文档的坐标。对于有定位父级的元素，返回相对于最近的有定位的父级的坐标。(无论是 left 还是margin-left等都是距离。 )
+
+position的默认值：static
+
+dom.offsetParent
+
+返回最近的有定位的父级，如无，返回body, body.offsetParent 返回null
+emmet：
+ul>li{$}*5
+
+ ____滚动条在y轴上滚动的距离 + 浏览器的视窗高度 = 文档的总高度 
+当 ：滚动条在y轴上滚动的距离 + 浏览器的视窗高度 = 文档的总高度
+说明：已经滚动到底部 ____
+
+ 
+
+### 查看视口的尺寸
+```bash
+window.innerWidth/innerHeight （加上 滚动条宽度 / 高度）
+IE8及IE8以下不兼容
+document.documentElement.clientWidth/clientHeight
+标准模式下，任意浏览器都兼容
+document.body.clientWidth/clientHeight
+适用于怪异模式下的浏览器
+封装兼容性方法，返回浏览器视口尺寸getViewportOffset()
+```
+脚本化css
+
+特殊的：eg:float — > cssFloat
+
+复合属性必须拆解
+
+查询计算样式
+```js
+window.getComputesStyle(elem, null);
+var style = window.getComputedStyle(div, null);
+		//第二个参数是null
+		// 选择伪元素
+		// null可以获取伪元素
+		```
+选择after的伪元素
+
+改变伪元素
+
+`
+		var after = window.getComputedStyle(div, 'after');`
+
+定位的left和top默认值为auto
+
+
+### 事件：
+事件触发的过程和函数
+
+如何绑定事件处理函数
+
+1. ele.onxxx = function (event) {}
+兼容性很好，但是一个元素只能绑定一个处理程序，属性赋值会被覆盖
+基本等同于写在HTML行间上，
+2. ele.addEventListener(type事件类型, fn处理函数, false);
+IE9以下不兼容，可以为一个事件绑定多个处理程序
+3. ele.attachEvent(‘on’ + type, fn);
+IE独有，一个事件同样可以绑定多个处理程序
+
+一但事件出现了循环，就要考虑是否出现闭包，就要使用立即执行函数
+
+事件处理程序的运行环境问题
+
+1. ele.onxxx = function (event) {}
+程序this指向是dom元素本身
+2. obj.addEventListener(type, fn, false);
+程序this指向是dom元素本身
+3. obj.attachEvent(‘on’ + type, fn);
+程序this指向window
+封装兼容性的 addEvent(elem, type, handle);方法
+
+解除事件处理程序
+```js
+ele.onclick = false/‘’/null;
+ele.removeEventListener(type, fn, false);
+ele.detachEvent(‘on’ + type, fn);
+```
+注:若绑定匿名函数，则无法解除
+
+事件冒泡：
+
+结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，急同一个事件，自子元素冒泡向父元素（自底向上）
+
+事件捕获：
+
+结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，急同一个事件，自子元素捕获至子元素（自底向下）
+
+如果同时存在冒泡和捕获的时候：
+触发顺序，先捕获，后冒泡
+
+focus（聚焦事件），blur，change，submit，reset，select等事件不冒泡
+
+取消冒泡：
+```bash
+W3C标准 event.stopPropagation();但不支持ie9以下版本
+IE独有 event.cancelBubble = true;
+封装取消冒泡的函数 stopBubble(event)
+```
+阻止默认事件:
+```bash
+默认事件 — 表单提交，a标签跳转，右键菜单等
+1.return false;  以对象属性的方式注册的事件才生效（兼容性很好）
+2.event.preventDefault(); W3C标注，IE9以下不兼容
+3.event.returnValue = false; 兼容IE
+封装阻止默认事件的函数 cancelHandler(event);
+```
+事件源对象：
+
+`
+var target = event.target || event.srcElement`
+
+作用：不需要循环所有的元素一个个绑定事件，当有新的子元素的时候，不需要重新绑定所有的事件
+
+鼠标事件：click、mousedown、mousemove（鼠标移动事件）、mouseup、contextmenu（右键取消菜单）、mouseover、mouseout、 mouseenter、mouseleave（效果是一样的）html5里面是写的enter和leave
+
+用button来区分鼠标的按键，0/1/2
+
+onclick = onmousedown + onmouseup
+
+顺序：down、up、click
+
+ 
+用button判断当前点击的是鼠标左键还是右键
+
+button == 0表示鼠标左键
+
+button == 2表示鼠标右键
+
+dom3标准规定，click只能监听左键，不能监听右键，能监听的只有onmousedown和onmouseup。
+
+js加载时间线：
+```bash
+执行顺序
+1、创建Document对象，开始解析web页面。解析HTML元素和他们的文本内容后添加Element对象和Text节点到文档中。这个阶段document.readyState = 'loading'。
+2、遇到link外部css，创建线程加载，并继续解析文档。
+3、遇到script外部js，并且没有设置async、defer，浏览器加载，并阻塞，等待js加载完成并执行该脚本，然后继续解析文档。
+4、遇到script外部js，并且设置有async、defer，浏览器创建线程加载，并继续解析文档。
+对于async属性的脚本，脚本加载完成后立即执行。（异步禁止使用document.write()）
+5、遇到img等，先正常解析dom结构，然后浏览器异步加载src，并继续解析文档。
+6、当文档解析完成，document.readyState = 'interactive'。
+7、文档解析完成后，所有设置有defer的脚本会按照顺序执行。（注意与async的不同,但同样禁止使用document.write()，有消除文档流的功能）;
+8、document对象触发DOMContentLoaded事件，这也标志着程序执行从同步脚本执行阶段，转化为事件驱动阶段。
+9、当所有async的脚本加载完成并执行后、img等加载完成后，document.readyState = 'complete'，window对象触发load事件。
+10、从此，以异步响应方式处理用户输入、网络事件等。
+```
+
+### js正则表达式
+
+RegExp
+```bash
+转义字符 \
+正常情况下：一个回车代表 \r\n
+正则表达式作用：匹配特殊字符或有特殊搭配原则的字符的最佳选择。
+正则表达式创建方法：
+正则表达式的三个修饰符：
+I 忽视大小写
+g 全局匹配
+m 多行匹配（.
+正则表达式的方法：test和字符串上面的方法match，字符串.match(正则表达式)
+```
+[参考手册]
+(http://www.w3school.com.cn/js/jsref_obj_regexp.asp)
+
+正则表达式的exec（）方法：
+reg.exec();
