@@ -1,4 +1,5 @@
 # js
+### 菜鸟整理笔记
 JS代码原则：高内聚，弱耦合
 1. ecmascript是一种语言标准，第一版标准发布于1997年，javascript是网景公司对ecmascript标准的一种实现。
 2. js不区分整数和浮点数，统一用number表示，nan表示 not a number,无法计算结果的时候用nan表示。
