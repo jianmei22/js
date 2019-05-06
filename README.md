@@ -36,3 +36,5 @@ firefox      gecko       -moz-
 opera        presto        -o- 
 
 safari       webkit   -webkit-
+
+# jQuery
